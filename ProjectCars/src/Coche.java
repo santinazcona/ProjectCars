@@ -5,6 +5,5 @@ public class Coche {
 		
 	}
 
-	//Prueba
-
+	//Prueba2
 }
