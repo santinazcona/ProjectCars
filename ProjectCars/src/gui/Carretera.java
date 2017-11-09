@@ -20,6 +20,6 @@ public class Carretera extends JPanel {
 		 
 		setOpaque(false);
 		super.paintComponent(grafico);
-		}
+	}
 
 }
