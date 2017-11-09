@@ -1,10 +1,16 @@
 package Vehiculo;
 
+import java.util.Vector;
+
 public class Coche {
 	
 	protected String name;
 	protected double posX;
 	protected double posY;
+	protected static Vector maxvelocidad = new Vector (0,100);
+	protected static Vector minvelocidad = new Vector (0,10);
+	protected static Vector aceleracion = new Vector();
+	protected Boolean posicion; 
 	
 	// Constructor vacio
 	public Coche(){
@@ -17,6 +23,13 @@ public class Coche {
 		this.name = name;
 		this.posX = posX;
 		this.posY = posY;
+		this.aceleracion.set(0,0);
+		
+	}
+	
+	public void movimiento(){
+		
+		
 	}
 	
 	//Getters and Setters
