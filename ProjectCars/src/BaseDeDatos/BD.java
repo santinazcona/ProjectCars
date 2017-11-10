@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import Vehiculo.Coche;
+import Vehiculo.Usuario;
 
 public class BD {
 	private Connection conexion;
@@ -42,5 +43,11 @@ public class BD {
 			}catch(SQLException E){
 				E.printStackTrace();
 			}
-		} 
+		}
+		public static boolean compruebaNick(String nick){
+			boolean comprobado = false;
+			
+			
+			return comprobado;
+		}
 }
