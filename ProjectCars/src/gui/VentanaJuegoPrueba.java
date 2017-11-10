@@ -27,7 +27,7 @@ public class VentanaJuegoPrueba extends JFrame{//JPanel{
 
 	public VentanaJuegoPrueba() {
 		
-		frame.setBounds(400, 200, 450, 300);
+		frame.setBounds(450, 200, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(100, 15));
 		frame.setVisible(true);

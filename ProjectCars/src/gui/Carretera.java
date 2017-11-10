@@ -15,24 +15,30 @@ import javax.swing.border.EmptyBorder;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import java.awt.Color;
 
 public class Carretera extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel contentPane2;
 	private BufferedImage image;
 	private ImageIcon Img;
 	
 	public Carretera() {
 //		this.setSize(300, 400);
-		setBounds(100, 100, 300, 400);
+		setBounds(0, 0, 700, 900);
 		setVisible(true);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(100, 100, 300, 400));
+		contentPane2 = new JPanel();
+		contentPane.setForeground(Color.LIGHT_GRAY);
 		setContentPane(contentPane);
-        contentPane.setLayout(null);
+		contentPane2.setBounds(50, 50, 100, 200);
+		contentPane.setLayout(null);
+		contentPane.add(contentPane2);
+		
         setBounds(0,0,800,600);
 	}
-	
+	/*
 	public void paint(Graphics grafico) {
 		Dimension height = getSize();
 //		try{
@@ -46,7 +52,7 @@ public class Carretera extends JFrame {
 //			ex.printStackTrace();
 //		}
 		//TODO el problema es la carga de imagen
-		Img = new ImageIcon(getClass().getResource("/Imagenes/road.jpg")); 
+		Img = new ImageIcon(getClass().getResource("road.jpg")); 
 		
 		grafico.drawImage(Img.getImage(), 0, 0, height.width, height.height, null);
 		
@@ -55,6 +61,5 @@ public class Carretera extends JFrame {
 //		Img.setOpaque(true);
 		super.paint(grafico);
 //		super.paintComponent(grafico);
-	}
-
+	}*/
 }
