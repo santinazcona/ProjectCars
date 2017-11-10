@@ -23,8 +23,7 @@ public class Coche {
 		this.name = name;
 		this.posX = posX;
 		this.posY = posY;
-		this.aceleracion.set(0,0);
-		
+		this.aceleracion.set(0, 0);
 	}
 	
 	public void movimiento(){
@@ -51,6 +50,10 @@ public class Coche {
 	public void setPosY(double posY) {
 		this.posY = posY;
 	}
+//	public void setAcel(double x, double y){
+//		this.posX = x;
+//		this.posY = y;
+//	}
 	
 
 }
