@@ -36,9 +36,9 @@ public class Carretera extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(contentPane2);
 		
-        setBounds(0,0,800,600);
+        setBounds(200,0,500,750);
 	}
-	/*
+	
 	public void paint(Graphics grafico) {
 		Dimension height = getSize();
 //		try{
@@ -57,9 +57,9 @@ public class Carretera extends JFrame {
 		grafico.drawImage(Img.getImage(), 0, 0, height.width, height.height, null);
 		
 		//setOpacity entre [0,1], es un float de nivel de transparencia
-		setOpacity(1.0f);
+		setOpacity(0.0f);
 //		Img.setOpaque(true);
 		super.paint(grafico);
 //		super.paintComponent(grafico);
-	}*/
+	}
 }
