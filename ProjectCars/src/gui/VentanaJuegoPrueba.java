@@ -1,5 +1,7 @@
 package gui;
 
+import Vehiculo.Coche;
+
 import java.awt.*;
 import java.awt.EventQueue;
 
@@ -46,6 +48,8 @@ public class VentanaJuegoPrueba extends JFrame{//JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				Carretera Carretera = new Carretera();
+				JPanelCoche c1 = new JPanelCoche();
+				Carretera.add(c1);
 				
 				//TODO No funciona aqui, no entiendo muy bien como va lo de usar Graphics2D
 //				Graphics2D g = (Graphics2D) g2;
