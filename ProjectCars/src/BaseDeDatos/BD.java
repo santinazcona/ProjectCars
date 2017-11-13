@@ -2,6 +2,7 @@ package BaseDeDatos;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -46,7 +47,17 @@ public class BD {
 		}
 		public static boolean compruebaNick(String nick){
 			boolean comprobado = false;
-			
+			String s = "SELECT * FROM Usuario WHERE Nick='"+nick+"'";
+			ResultSet resultado;
+			try {
+				resultado = stmt.executeQuery(s);
+				if(resultado.next())
+					comprobado=true;
+				resultado.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 			return comprobado;
 		}
