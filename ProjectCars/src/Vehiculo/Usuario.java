@@ -3,7 +3,7 @@ package Vehiculo;
 public class Usuario extends Coche {
 	private String nombre;
 	private String nick;
-	private String constraseña;
+	private String contraseña;
 	public String getNombre() {
 		return nombre;
 	}
@@ -16,17 +16,17 @@ public class Usuario extends Coche {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
-	public String getConstraseña() {
-		return constraseña;
+	public String getContraseña() {
+		return contraseña;
 	}
-	public void setConstraseña(String constraseña) {
-		this.constraseña = constraseña;
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
-	public Usuario(String nombre, String nick, String constraseña) {
+	public Usuario(String nombre, String nick, String contraseña) {
 		super();
 		this.nombre = nombre;
 		this.nick = nick;
-		this.constraseña = constraseña;
+		this.contraseña = contraseña;
 	}
 	
 
