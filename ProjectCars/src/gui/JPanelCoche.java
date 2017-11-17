@@ -14,7 +14,7 @@ public class JPanelCoche extends JFrame{
 	public Coche co = new Coche("c1", 50, 50);
 	private ImageIcon Img;
 	
-	public JPanelCoche(){
+	public JPanelCoche(Coche co){
 		this.setBounds((int)co.getPosX(), (int)co.getPosY(), 5, 20);
 	}
 	

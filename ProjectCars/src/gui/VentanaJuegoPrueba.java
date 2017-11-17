@@ -47,8 +47,17 @@ public class VentanaJuegoPrueba extends JFrame{//JPanel{
 		bPonerCarretera.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e){
-				JCarretera JCarretera = new JCarretera();
+			public void actionPerformed(ActionEvent e1){
+//				EventQueue.invokeLater(new Runnable() {
+//					public void run() {
+//						try {
+//							JCarretera JCarretera = new JCarretera();
+//						} catch (Exception e1) {
+//							e1.printStackTrace();
+//						}
+//					}
+//				});
+				JCarretera.invocar();
 //				JPanelCoche c1 = new JPanelCoche();
 //				JCarretera.add(c1);
 				

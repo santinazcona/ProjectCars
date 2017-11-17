@@ -31,6 +31,7 @@ public class JCarretera extends JFrame {
 	private ImageIcon Img1;
 	private static int widthX = 512;
 	private static int heighY = 512;
+//	public static Coche co = new Coche("c1", widthX*0.31, 400);
 	public static Coche co = new Coche("c1", widthX*0.31, 400);
 
 /*
@@ -104,13 +105,24 @@ public class JCarretera extends JFrame {
 		//contentPane2 = new JPanel();
 		//Color para hacer pruebas de transparencia
 		//contentPane.setForeground(Color.LIGHT_GRAY);
-		setContentPane(contentPane);
+		//setContentPane(contentPane);
 		//contentPane2.setBounds(50, 50, 100, 200);
 		contentPane.setLayout(null);
 		//contentPane.add(contentPane2);
-		
-		
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        
+	}
+	
+	public static void invocar(){
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JCarretera JCarretera = new JCarretera();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 	}
 	
 	public void paint(Graphics grafico) {
@@ -126,19 +138,23 @@ public class JCarretera extends JFrame {
 //			ex.printStackTrace();
 //		}
 		//TODO el problema es la carga de imagen
-		Img = new ImageIcon(getClass().getResource("road.png")); 
-		
-		grafico.drawImage(Img.getImage(), 0, 0, height.width, height.height, null);
-		
-		Img1 = new ImageIcon(getClass().getResource("coche1.png")); 
-		
-		grafico.drawImage(Img1.getImage(), (int)co.getPosX(), (int)co.getPosY(), 40, 70, null);
-		
+		try{
+			Img = new ImageIcon(getClass().getResource("road.png")); 
+			
+			grafico.drawImage(Img.getImage(), 0, 0, height.width, height.height, null);
+			
+			Img1 = new ImageIcon(getClass().getResource("coche1.png")); 
+			
+			grafico.drawImage(Img1.getImage(), (int)co.getPosX(), (int)co.getPosY(), 40, 70, null);
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
+			
 		//setOpacity entre [0,1], es un float de nivel de transparencia
-		if(getOpacity() != 0.0f)
-			setOpacity(0.0f);
+//		if(getOpacity() != 0.0f)
+//			setOpacity(0.0f);
 //		Img.setOpaque(true);
-		super.paint(grafico);
+//		super.paint(grafico);
 //		super.paintComponent(grafico);
 	}
 }
