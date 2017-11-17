@@ -48,7 +48,7 @@ public class Coche {
 		return posY;
 	}
 	public void setPosY(double posY) {
-		this.posY = posY;
+		this.posY = this.posY + posY;
 	}
 //	public void setAcel(double x, double y){
 //		this.posX = x;

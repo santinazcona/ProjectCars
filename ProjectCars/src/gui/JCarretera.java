@@ -31,6 +31,7 @@ public class JCarretera extends JFrame {
 	private ImageIcon Img1;
 	private static int widthX = 512;
 	private static int heighY = 512;
+	private static double hY = (double) (heighY);
 //	public static Coche co = new Coche("c1", widthX*0.31, 400);
 	public static Coche co = new Coche("c1", widthX*0.31, 400);
 
@@ -52,6 +53,8 @@ public class JCarretera extends JFrame {
 			public void keyPressed(KeyEvent k) {
 				switch( k.getKeyChar() ){
 					case 'w':
+						if(co.getPosY()<heighY*0.07)
+							co.setPosY(-hY*0.05);
 						break;
 					case 'e':
 						break;
@@ -64,6 +67,8 @@ public class JCarretera extends JFrame {
 						}
 						break;
 					case 's':
+						if(co.getPosY()<heighY*0.8)
+							co.setPosY(hY*0.05);
 						break;
 					case 'd':
 						if(co.getPosX()<widthX*0.63){
@@ -78,6 +83,8 @@ public class JCarretera extends JFrame {
 				}
 				switch( k.getKeyCode() ){
 					case KeyEvent.VK_UP:
+						if(co.getPosY()<heighY*0.07)
+							co.setPosY(-hY*0.05);
 						break;
 					case KeyEvent.VK_LEFT:
 						if(co.getPosX()> widthX*0.31) {
@@ -88,6 +95,8 @@ public class JCarretera extends JFrame {
 						}
 						break;
 					case KeyEvent.VK_DOWN:
+						if(co.getPosY()<heighY*0.8)
+							co.setPosY(hY*0.05);
 						break;
 					case KeyEvent.VK_RIGHT:
 						if(co.getPosX()<widthX*0.63){
