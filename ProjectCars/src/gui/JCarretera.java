@@ -137,7 +137,13 @@ public class JCarretera extends JFrame {
 //		}catch(IOException ex){
 //			ex.printStackTrace();
 //		}
-		//TODO el problema es la carga de imagen
+		//TODO he puesto a dormir el hilo para intentar mover el coche, pero es bastante tonto porque se duerme el mismo hilo
+		// que se encarga de mover el coche...
+		try{
+//			Thread.sleep(200);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		try{
 			Img = new ImageIcon(getClass().getResource("road.png")); 
 			
