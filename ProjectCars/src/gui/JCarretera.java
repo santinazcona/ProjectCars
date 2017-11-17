@@ -22,7 +22,7 @@ import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Carretera extends JFrame {
+public class JCarretera extends JFrame {
 
 	private JFrame contentPane;
 //	private JPanel contentPane2;
@@ -40,7 +40,7 @@ public class Carretera extends JFrame {
 	//tercer carril: 	de 294 a 369 pos de coche 321 = width*0.63
 */
 
-	public Carretera() {
+	public JCarretera() {
 //		this.setSize(300, 400);
 		//setBounds(0, 0, 700, 900);
 		setBounds(200,0, widthX, heighY);
@@ -71,6 +71,7 @@ public class Carretera extends JFrame {
 							else
 								co.setPosX(widthX*0.63);
 						}
+						break;
 					default:
 						break;
 				}
@@ -94,6 +95,7 @@ public class Carretera extends JFrame {
 							else
 								co.setPosX(widthX*0.63);
 						}
+						break;
 					default:
 						break;
 				}
@@ -101,7 +103,7 @@ public class Carretera extends JFrame {
 		});
 		//contentPane2 = new JPanel();
 		//Color para hacer pruebas de transparencia
-		contentPane.setForeground(Color.LIGHT_GRAY);
+		//contentPane.setForeground(Color.LIGHT_GRAY);
 		setContentPane(contentPane);
 		//contentPane2.setBounds(50, 50, 100, 200);
 		contentPane.setLayout(null);
