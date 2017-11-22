@@ -43,7 +43,9 @@ public class VentanaJuegoPrueba extends JFrame{//JPanel{
 		frame.getContentPane().add(pCarretera, BorderLayout.CENTER);
 		frame.getContentPane().add(pBoton, BorderLayout.NORTH);
 		JButton bPonerCarretera = new JButton("Poner carretera de prueba");
+		JButton bPonerOtraCarretera = new JButton("Poner otra carretera pueba");
 		pBoton.add(bPonerCarretera);
+		pBoton.add(bPonerOtraCarretera);
 		bPonerCarretera.addActionListener(new ActionListener() {
 			
 			@Override
@@ -70,6 +72,13 @@ public class VentanaJuegoPrueba extends JFrame{//JPanel{
 //				JPanel jPanell = new JPanel();
 //				jPanell.add(Carretera);
 //				jPanell.repaint();
+			}
+		});
+		bPonerOtraCarretera.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e2){
+				JCarreteraP2.invocar();
 			}
 		});
 //		private void jButtonActionPerformed(ActionEvent e){

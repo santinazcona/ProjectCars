@@ -22,11 +22,13 @@ import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class JCarretera extends JFrame {
-	//JPanel;
+public class JCarretera extends //JPanel { 
+	JFrame {
+	//JPanel {
 
 	private JFrame contentPane;
-//	private JPanel contentPane2;
+	private JPanel contentP;
+	private JPanel contentP2;
 	private BufferedImage image;
 	private ImageIcon Img;
 	private ImageIcon Img1;
@@ -46,6 +48,7 @@ public class JCarretera extends JFrame {
 	public JCarretera() {
 //		this.setSize(300, 400);
 		//setBounds(0, 0, 700, 900);
+		invocarCoche();
 		setBounds(200,0, widthX, heighY);
 		setVisible(true);
 		contentPane = new JFrame();
@@ -142,9 +145,28 @@ public class JCarretera extends JFrame {
 			}
 		});
 		t.start();
-		
 	}
-	private int alt=0;
+	public static void invocarCoche(){
+		Thread t2 = new Thread( new Runnable() {
+			public void run() {
+				try {
+					JLabelCoche jCoche = new JLabelCoche();
+					while(true){
+						jCoche.repaint();
+						try{
+							Thread.sleep(20);
+						}catch(Exception e){
+							e.printStackTrace();
+						}
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		t2.start();
+	}
+	private int alt=-512;
 	public void paint(Graphics grafico) {
 		Dimension height = getSize();
 //		try{
@@ -165,14 +187,14 @@ public class JCarretera extends JFrame {
 			e.printStackTrace();
 		}
 		try{
-			Img = new ImageIcon(getClass().getResource("img/road.png")); 
+			Img = new ImageIcon(getClass().getResource("img/Carretera-x-1-2-ConvertImage.png")); 
 			
 			grafico.drawImage(Img.getImage(), 0, alt, height.width, height.height, null);
 			alt=alt+1;
-			
-			Img1 = new ImageIcon(getClass().getResource("img/coche1.png")); 
-			
-			grafico.drawImage(Img1.getImage(), (int)co.getPosX(), (int)co.getPosY(), 40, 70, null);
+//			
+//			Img1 = new ImageIcon(getClass().getResource("img/coche1.png")); 
+//			
+//			grafico.drawImage(Img1.getImage(), (int)co.getPosX(), (int)co.getPosY(), 40, 70, null);
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}
