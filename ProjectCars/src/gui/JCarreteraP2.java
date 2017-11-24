@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 import Vehiculo.Coche;
 
-public class JCarreteraP2 extends JPanel{
+public class JCarreteraP2 extends JFrame{
 
 
 	private JFrame contentPane;

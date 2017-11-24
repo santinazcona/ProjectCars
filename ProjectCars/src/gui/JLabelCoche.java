@@ -14,7 +14,7 @@ public class JLabelCoche extends JLabel{
 	
 	public JLabelCoche(){
 		try{
-			setIcon(new ImageIcon(getClass().getResource("img/road.png")));
+			setIcon(new ImageIcon(getClass().getResource("img/coche1.png")));
 		}catch (Exception e){
 			System.err.println("La imagen del coche no se ha podido encontrar");
 			e.printStackTrace();
