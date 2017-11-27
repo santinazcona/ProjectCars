@@ -61,4 +61,28 @@ public class BD {
 			
 			return comprobado;
 		}
+		public void insertarUsuario(String n,String ni,String c,String e){
+			String bd = "INSERT INTO cliente(nombre, nick, contraseña, email) VALUES ('"+n+"','"+ni+"','"+c+"','"+e+"')";
+			try{
+				stmt.execute(bd);
+			}catch(SQLException iC){
+				iC.printStackTrace();
+			}
+		}
+
+		public Usuario obtenerDatos( String nombre){
+			String s = "SELECT * FROM Usuario WHERE nombre='"+nombre+"'";
+			Usuario u=null;
+			try {
+				ResultSet od = stmt.executeQuery(s);
+				if(od.next())
+					u = new Usuario(od.getString("nombre"),od.getString("nick"),od.getString("email"),od.getString("contraseña"));
+				od.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			return u;
+		}
 }
+		
