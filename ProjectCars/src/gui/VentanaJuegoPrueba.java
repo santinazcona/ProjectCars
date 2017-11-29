@@ -1,8 +1,6 @@
 package gui;
 
 import Vehiculo.Coche;
-//import Vehiculo.Ventana.Carretera;
-
 import java.awt.*;
 import java.awt.EventQueue;
 
