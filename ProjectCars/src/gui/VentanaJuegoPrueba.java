@@ -33,6 +33,7 @@ public class VentanaJuegoPrueba extends JFrame{//JPanel{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(100, 15));
 		frame.setVisible(true);
+		frame.setTitle("Ventana menu juego");
 		
 //		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 //		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

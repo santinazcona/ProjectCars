@@ -12,6 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Vehiculo.Coche;
+import java.awt.FlowLayout;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 
 public class JCarreteraP2 extends JFrame{
 
@@ -34,8 +37,14 @@ public class JCarreteraP2 extends JFrame{
 			public void run() {
 				try {
 					JCarreteraP2 jCarreteraP2 = new JCarreteraP2();
+					JPanelCarretera jPC = new JPanelCarretera();
+					JLabelCoche c1 = new JLabelCoche();
+					jCarreteraP2.add(jPC);
+					jPC.add(c1);
 					while(true){
-						jCarreteraP2.repaint();
+						c1.setLocation(c1.getX()+1, c1.getY()+1);
+						jPC.repaint();
+//						jCarreteraP2.repaint(); //repaint(x, y, width, height); (position x , position y, width, height)
 						try{
 							Thread.sleep(20);
 						}catch(Exception e){
@@ -73,10 +82,21 @@ public class JCarreteraP2 extends JFrame{
 	public JCarreteraP2() {
 //		this.setSize(300, 400);
 		//setBounds(0, 0, 700, 900);
-		invocarCoche();
+		//invocarCoche();
 		setBounds(200,0, widthX, heighY);
 		setVisible(true);
+		setResizable(false);
+		setTitle("Carretera");
 		contentPane = new JFrame();
+		JPanelCarretera jPC = new JPanelCarretera();
+		jPC.setBounds(0, 0, 512, 512);
+		contentPane.getContentPane().add(jPC);
+		jPC.setBorder(new EmptyBorder(0, 0, 0, 0));
+		FlowLayout flowLayout = (FlowLayout) jPC.getLayout();
+		flowLayout.setAlignOnBaseline(true);
+		flowLayout.setAlignment(FlowLayout.LEADING);
+		flowLayout.setVgap(250);
+		flowLayout.setHgap(250);
 		contentPane.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent k) {
@@ -143,19 +163,25 @@ public class JCarreteraP2 extends JFrame{
 		//contentPane2 = new JPanel();
 		//setContentPane(contentPane);
 		//contentPane2.setBounds(50, 50, 100, 200);
-		contentPane.setLayout(null);
+		contentPane.getContentPane().setLayout(null);
 		//contentPane.add(contentPane2);
 //		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        
 	}
 	private int y=-528;
+	
+	//TODO
+	//En un JFRame no se puede usar paintComponente
+	//EL JFrame tiene pait para dibujar los paneles
+	/*
 	@Override
 	public void paintComponent(Graphics g3){
-		Image img= ((ImageIcon)getIcon()).getImage();
-		Graphics2D g4 = (Graphics2D) g;
+		Image img= ((ImageIcon)getIcon()).getImage(); //"img/Carretera-x-1-2.png"
+		Graphics2D g4 = (Graphics2D) g3;
 		g4.drawImage(img, 0, y, 512, 1056, null);
 		y = y+ 1;
 	}
+	*/
 	
 //	@Override
 //	public void paintComponent(Graphics g){
