@@ -187,14 +187,14 @@ public class JCarretera extends //JPanel {
 			e.printStackTrace();
 		}
 		try{
-			Img = new ImageIcon(getClass().getResource("img/Carretera-x-1-2-ConvertImage.png")); 
+			Img = new ImageIcon(getClass().getResource("img/Carretera-x-1-2.png")); 
 			
 			grafico.drawImage(Img.getImage(), 0, alt, height.width, height.height, null);
 			alt=alt+1;
-//			
-//			Img1 = new ImageIcon(getClass().getResource("img/coche1.png")); 
-//			
-//			grafico.drawImage(Img1.getImage(), (int)co.getPosX(), (int)co.getPosY(), 40, 70, null);
+			
+			Img1 = new ImageIcon(getClass().getResource("img/coche1.png")); 
+			
+			grafico.drawImage(Img1.getImage(), (int)co.getPosX(), (int)co.getPosY(), 40, 70, null);
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}
