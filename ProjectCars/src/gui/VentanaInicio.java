@@ -18,10 +18,10 @@ import BaseDeDatos.BD;
 	public class VentanaInicio extends JFrame implements ActionListener {
 
 		private JPanel contentPane, panelCentro, panelIzquierda,panelDerecha, panelNorte;
-		private JTextField txtEmail,txtNick,txtNombre;
+		private JTextField txtNick,txtNombre;
 		private JPasswordField psContraseña;
 		private JButton btnAtras, btnAceptar;
-		private JLabel lblCuentaDeUsuario,lblEmail,lblContraseña,lblNombre;
+		private JLabel lblCuentaDeUsuario,lblContraseña,lblNombre;
 
 		public VentanaInicio(JFrame va) {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,11 +59,6 @@ import BaseDeDatos.BD;
 			lblCuentaDeUsuario.setBounds(21, 0, 164, 14);
 			panelIzquierda.add(lblCuentaDeUsuario);
 
-			lblEmail = new JLabel("Email : ");
-			lblEmail.setHorizontalAlignment(SwingConstants.LEFT);
-			lblEmail.setBounds(21, 43, 66, 14);
-			panelIzquierda.add(lblEmail);
-
 			lblContraseña = new JLabel("Contrase\u00F1a : ");
 			lblContraseña.setHorizontalAlignment(SwingConstants.LEFT);
 			lblContraseña.setBounds(21, 94, 78, 14);
@@ -96,18 +91,15 @@ import BaseDeDatos.BD;
 		}
 		public void campoVacio()
 		{
-			txtEmail.setText("");
 			txtNick.setText("");
 			txtNombre.setText("");
 			psContraseña.setText("");
 			
 		}
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
+
 			
 			
-		}
+		
 
 
 }
