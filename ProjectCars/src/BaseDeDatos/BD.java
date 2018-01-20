@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import Vehiculo.Coche;
 import Vehiculo.Usuario;
@@ -83,6 +84,17 @@ public class BD {
 			}
 			
 			return u;
+		}
+		public void guardarArboles(ArrayList<Coche> coche){
+			for(Coche c: coche){
+				String s = "insert into arbol values("+c.getPosX()+","+c.getPosY()+",'"+c.getName()+"',"+")";
+				try {
+					stmt.executeUpdate(s);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
 		}
 }
 		
