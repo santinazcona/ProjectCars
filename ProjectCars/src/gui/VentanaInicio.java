@@ -20,7 +20,7 @@ import BaseDeDatos.BD;
 		private JPanel contentPane, panelCentro, panelIzquierda,panelDerecha, panelNorte;
 		private JTextField txtNick,txtNombre;
 		private JPasswordField psContraseña;
-		private JButton btnAtras, btnAceptar;
+		private JButton btnAtras, btnAceptar, btnEmpezarCarrera;
 		private JLabel lblCuentaDeUsuario,lblContraseña,lblNombre;
 
 		public VentanaInicio(JFrame va) {
@@ -48,6 +48,11 @@ import BaseDeDatos.BD;
 			btnAtras.setBounds(249, 269, 137, 23);
 			contentPane.add(btnAtras);
 			btnAtras.addActionListener(this);
+			
+			btnEmpezarCarrera = new JButton("Empezar Carrera");
+			btnEmpezarCarrera.addActionListener(this);
+			btnEmpezarCarrera.setBounds(100, 269, 137, 23);
+			contentPane.add(btnEmpezarCarrera);
 
 			panelIzquierda = new JPanel();
 			panelIzquierda.setBounds(5, 40, 219, 216);
@@ -62,12 +67,7 @@ import BaseDeDatos.BD;
 			lblContraseña = new JLabel("Contrase\u00F1a : ");
 			lblContraseña.setHorizontalAlignment(SwingConstants.LEFT);
 			lblContraseña.setBounds(21, 94, 78, 14);
-			panelIzquierda.add(lblContraseña);
-
-			txtEmail = new JTextField();
-			txtEmail.setBounds(97, 40, 110, 20);
-			panelIzquierda.add(txtEmail);
-			txtEmail.setColumns(10);
+			panelIzquierda.add(lblContraseña);			
 
 			psContraseña = new JPasswordField();
 			psContraseña.setBounds(97, 91, 110, 20);
