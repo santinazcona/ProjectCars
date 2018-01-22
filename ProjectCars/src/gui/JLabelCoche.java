@@ -12,6 +12,7 @@ public class JLabelCoche extends JLabel{
 	public static final int ALTURA_COCHE = 70;
 	public static final int ANCHO_COCHE = 40; 
 	
+	
 	public JLabelCoche(){
 		try{
 			setIcon(new ImageIcon(getClass().getResource("img/coche1.png")));

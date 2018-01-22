@@ -32,6 +32,7 @@ public class JCarreteraP2 extends JFrame{
 	public static Coche co = new Coche("c1", widthX*0.31, 400);
 	
 	
+	
 	public static void invocar(){
 		Thread t = new Thread( new Runnable() {
 			public void run() {
@@ -39,10 +40,13 @@ public class JCarreteraP2 extends JFrame{
 					JCarreteraP2 jCarreteraP2 = new JCarreteraP2();
 					JPanelCarretera jPC = new JPanelCarretera();
 					JLabelCoche c1 = new JLabelCoche();
+					JLabelOtrosCoches c2 = new JLabelOtrosCoches();
 					jCarreteraP2.add(jPC);
 					jPC.add(c1);
+					jPC.add(c2);
 					while(true){
 						c1.setLocation(c1.getX()+1, c1.getY()+1);
+						c2.setLocation(c2.getX()+2, c2.getY()+2);
 						jPC.repaint();
 //						jCarreteraP2.repaint(); //repaint(x, y, width, height); (position x , position y, width, height)
 						try{
@@ -78,7 +82,27 @@ public class JCarreteraP2 extends JFrame{
 		});
 		t2.start();
 	}
-	
+	public static void invocarOtrosCoche(){
+		Thread t3 = new Thread( new Runnable() {
+			public void run() {
+				try {
+					JLabelCoche jOtrosCoche = new JLabelCoche();
+					while(true){
+						jOtrosCoche.repaint();
+						try{
+							Thread.sleep(20);
+						}catch(Exception e){
+							e.printStackTrace();
+						}
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		t3.start();
+		invocarOtrosCoche();
+	}
 	public JCarreteraP2() {
 //		this.setSize(300, 400);
 		//setBounds(0, 0, 700, 900);

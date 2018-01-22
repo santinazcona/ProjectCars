@@ -85,9 +85,9 @@ public class BD {
 			
 			return u;
 		}
-		public void guardarArboles(ArrayList<Coche> coche){
+		public void guardarCoches(ArrayList<Coche> coche){
 			for(Coche c: coche){
-				String s = "insert into arbol values("+c.getPosX()+","+c.getPosY()+",'"+c.getName()+"',"+")";
+				String s = "insert into coche values("+c.getPosX()+","+c.getPosY()+",'"+c.getName()+"',"+")";
 				try {
 					stmt.executeUpdate(s);
 				} catch (SQLException e) {
