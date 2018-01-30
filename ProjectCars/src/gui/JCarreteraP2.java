@@ -16,8 +16,7 @@ import java.awt.FlowLayout;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
-public class JCarreteraP2 extends JFrame{
-
+public class JCarreteraP2 extends JFrame {
 
 	private JFrame contentPane;
 	private JPanel contentP;
@@ -28,13 +27,19 @@ public class JCarreteraP2 extends JFrame{
 	private static int widthX = 512;
 	private static int heighY = 512;
 	private static double hY = (double) (heighY);
-//	public static Coche co = new Coche("c1", widthX*0.31, 400);
-	public static Coche co = new Coche("c1", widthX*0.31, 400);
-	
-	
-	
-	public static void invocar(){
-		Thread t = new Thread( new Runnable() {
+	// public static Coche co = new Coche("c1", widthX*0.31, 400);
+	public static Coche co = new Coche("c1", widthX * 0.31, 400);
+
+	public static boolean[] mov = { 
+			false,  //w
+			false,  //a
+			false,  //s
+			false,  //d
+			false,  //e || "espacio" esta aun sin uso, pero para recordar hacer algo
+			false };//p para pausar
+
+	public static void invocar() {
+		Thread t = new Thread(new Runnable() {
 			public void run() {
 				try {
 					JCarreteraP2 jCarreteraP2 = new JCarreteraP2();
@@ -44,109 +49,156 @@ public class JCarreteraP2 extends JFrame{
 					jCarreteraP2.add(jPC);
 					jPC.add(c1);
 					jPC.add(c2);
-//					invocarOtrosCoche(); //no dibuja, porque no se añaden al panel
-					while(true){
-						System.out.println( "En bucle invocar");
-//						c1.setLocation(c1.getX()+1, c1.getY()+1);
-//						c2.setLocation(c2.getX()+2, c2.getY()+2);
-//						jPC.repaint();
-////						jCarreteraP2.repaint(); //repaint(x, y, width, height); (position x , position y, width, height)
-//						try{
-//							Thread.sleep(20);
-//						}catch(Exception e){
-//							e.printStackTrace();
-//						}
-						
-					
-						jCarreteraP2.addKeyListener(new KeyAdapter() {
-							@Override
-							public void keyPressed(KeyEvent k) {
-								switch( k.getKeyChar() ){
-									case 'w':
-										if(c1.getLocation().getY()<heighY*0.07){
-											System.out.println(c1.getY());
-											c1.setLocation(c1.getX(), c1.getY()+1);
-											System.out.println(c1.getY());
-										}
-	//									if(co.getPosY()<heighY*0.07)
-	//										co.setPosY(-hY*0.05);
-										break;
-									case 'e':
-										break;
-									case 'a':
-										if(c1.getX() > widthX*0.31) 
-											c1.setLocation(c1.getX()-1, c1.getY());
-											
-	//									if(co.getPosX()> widthX*0.31) {
-	//										if(co.getPosX()> widthX*0.45)
-	//											co.setPosX(widthX*0.45);
-	//										else
-	//											co.setPosX(widthX*0.31);
-	//									}
-										break;
-									case 's':
-										if(c1.getY() < heighY*0.9)
-											c1.setLocation(c1.getX(), c1.getY()-1);
-	//									if(co.getPosY()<heighY*0.8)
-	//										co.setPosY(hY*0.05);
-										break;
-									case 'd':
-										if(c1.getX() < widthX*0.63)
-											c1.setLocation(c1.getX()+1, c1.getY());
-											
-	//									if(co.getPosX()<widthX*0.63){
-	//										if(co.getPosX()<widthX*0.45)
-	//											co.setPosX(widthX*0.45);
-	//										else
-	//											co.setPosX(widthX*0.63);
-	//									}
-										break;
-									default:
-										break;
-								}
-								switch( k.getKeyCode() ){
-									case KeyEvent.VK_UP:
-										if(c1.getY()<heighY*0.07)
-											c1.setLocation(c1.getX(), c1.getY());
-//											co.setPosY(-hY*0.05);
-										break;
-									case KeyEvent.VK_LEFT:
-										if(c1.getX() > widthX*0.31)
-											c1.setLocation(c1.getX()-1, c1.getY());
-//										if(co.getPosX()> widthX*0.31) {
-//											if(co.getPosX()> widthX*0.45)
-//												co.setPosX(widthX*0.45);
-//											else
-//												co.setPosX(widthX*0.31);
-//										}
-										break;
-									case KeyEvent.VK_DOWN:
-										if(c1.getY() < heighY*0.8)
-											c1.setLocation(c1.getX(), c1.getY()+1);
-//										if(co.getPosY()<heighY*0.8)
-//											co.setPosY(hY*0.05);
-										break;
-									case KeyEvent.VK_RIGHT:
-										if(c1.getX()<widthX*0.63)
-											c1.setLocation(c1.getX(), c1.getY());
-//										if(co.getPosX()<widthX*0.63){
-//											if(co.getPosX()<widthX*0.45)
-//												co.setPosX(widthX*0.45);
-//											else
-//												co.setPosX(widthX*0.63);
-//										}
-										break;
-									default:
-										break;
-								}
-								jPC.repaint();
+					c1.setLocation((int) (widthX * 0.45), 400);
+					// invocarOtrosCoche(); //no dibuja, porque no se añaden al
+					// panel
+					jCarreteraP2.addKeyListener(new KeyAdapter() {
+						@Override
+						public void keyPressed(KeyEvent k) {
+							switch (k.getKeyChar()) {
+							case 'w':
+//								if (c1.getLocation().getY() < heighY * 0.07) {
+//									System.out.println(c1.getY());
+//									c1.setLocation(c1.getX(), c1.getY() + 1);
+//									System.out.println(c1.getY());
+//								}
+								// if(co.getPosY()<heighY*0.07)
+								// co.setPosY(-hY*0.05);
+								mov[0] = true;
+								break;
+							case 'a':
+//								if (c1.getX() > widthX * 0.31)
+//									c1.setLocation(c1.getX() - 1, c1.getY());
+
+								// if(co.getPosX()> widthX*0.31) {
+								// if(co.getPosX()> widthX*0.45)
+								// co.setPosX(widthX*0.45);
+								// else
+								// co.setPosX(widthX*0.31);
+								// }
+								mov[1] = true;
+								break;
+							case 's':
+//								if (c1.getY() < heighY * 0.9)
+//									c1.setLocation(c1.getX(), c1.getY() - 1);
+								// if(co.getPosY()<heighY*0.8)
+								// co.setPosY(hY*0.05);
+								mov[2] = true;
+								break;
+							case 'd':
+//								if (c1.getX() < widthX * 0.63)
+//									c1.setLocation(c1.getX() + 1, c1.getY());
+
+								// if(co.getPosX()<widthX*0.63){
+								// if(co.getPosX()<widthX*0.45)
+								// co.setPosX(widthX*0.45);
+								// else
+								// co.setPosX(widthX*0.63);
+								// }
+								mov[3] = true;
+								break;
+							case 'e':
+								mov[4] = true;
+								break;
+							case ' ':
+								mov[4] = true;
+								break;
+							case 'p':
+								mov[5] = true;
+							default:
+								break;
 							}
-						});
-						jPC.bajarCarretera( 1 );
+							switch (k.getKeyCode()) {
+							case KeyEvent.VK_UP:
+//								if (c1.getY() < heighY * 0.07)
+//									c1.setLocation(c1.getX(), c1.getY());
+								// co.setPosY(-hY*0.05);
+								mov[0] = true;
+								break;
+							case KeyEvent.VK_LEFT:
+//								if (c1.getX() > widthX * 0.31)
+//									c1.setLocation(c1.getX() - 1, c1.getY());
+								// if(co.getPosX()> widthX*0.31) {
+								// if(co.getPosX()> widthX*0.45)
+								// co.setPosX(widthX*0.45);
+								// else
+								// co.setPosX(widthX*0.31);
+								// }
+								mov[1] = true;
+								break;
+							case KeyEvent.VK_DOWN:
+//								if (c1.getY() < heighY * 0.8)
+//									c1.setLocation(c1.getX(), c1.getY() + 1);
+								// if(co.getPosY()<heighY*0.8)
+								// co.setPosY(hY*0.05);
+								mov[2] = true;
+								break;
+							case KeyEvent.VK_RIGHT:
+//								if (c1.getX() < widthX * 0.63)
+//									c1.setLocation(c1.getX(), c1.getY());
+								// if(co.getPosX()<widthX*0.63){
+								// if(co.getPosX()<widthX*0.45)
+								// co.setPosX(widthX*0.45);
+								// else
+								// co.setPosX(widthX*0.63);
+								// }
+								mov[3] = true;
+								break;
+							default:
+								break;
+							}
+							jPC.repaint();
+						}
+					});
+
+					while (true) {
+						System.out.println("En bucle invocar");
+						// c1.setLocation(c1.getX()+1, c1.getY()+1);
+						// c2.setLocation(c2.getX()+2, c2.getY()+2);
+						// jPC.repaint();
+						//// jCarreteraP2.repaint(); //repaint(x, y, width,
+						// height); (position x , position y, width, height)
+						// try{
+						// Thread.sleep(20);
+						// }catch(Exception e){
+						// e.printStackTrace();
+						// }
+						
+						jPC.bajarCarretera(1);
 						jPC.repaint();
-						try{
+						
+						if(mov[0]){	
+							c1.setLocation(c1.getX(), c1.getY()-1);
+							mov[0] = false;
+						}
+						if(mov[1]){	
+							c1.setLocation(c1.getX()-1, c1.getY());
+							mov[1] = false;
+						}
+						if(mov[2]){	
+							c1.setLocation(c1.getX(), c1.getY()+1);
+							mov[2] = false;
+						}
+						if(mov[3]){	
+							c1.setLocation(c1.getX()+1, c1.getY());
+							mov[3] = false;
+						}
+						if(mov[4]){	
+							//Aun hay que hacer el metodo para que las habilidades
+							mov[4] = false;
+						}
+						if(mov[5]){
+							//crear una nueva ventana desde aqui, con lo que el hilo que ejecuta el juego se parará
+							mov[5] = false;
+						}
+//						mov[1] = false;
+//						mov[2] = false;
+//						mov[3] = false;
+//						mov[4] = false;
+//						mov[5] = false;
+						try {
 							Thread.sleep(20);
-						}catch(Exception e){
+						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
@@ -155,20 +207,21 @@ public class JCarreteraP2 extends JFrame{
 				}
 			}
 		});
-		
+
 		t.start();
 	}
-	public static void invocarCoche(){
-		Thread t2 = new Thread( new Runnable() {
+
+	public static void invocarCoche() {
+		Thread t2 = new Thread(new Runnable() {
 			public void run() {
 				try {
 					JLabelCoche jCoche = new JLabelCoche();
-					while(true){
-						System.out.println( "En bucle invocarCoche");
+					while (true) {
+						System.out.println("En bucle invocarCoche");
 						jCoche.repaint();
-						try{
+						try {
 							Thread.sleep(20);
-						}catch(Exception e){
+						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
@@ -179,17 +232,18 @@ public class JCarreteraP2 extends JFrame{
 		});
 		t2.start();
 	}
-	public static void invocarOtrosCoche(){
-		Thread t3 = new Thread( new Runnable() {
+
+	public static void invocarOtrosCoche() {
+		Thread t3 = new Thread(new Runnable() {
 			public void run() {
 				try {
 					JLabelCoche jOtrosCoche = new JLabelCoche();
-					while(true){
-						System.out.println( "En bucle invocarOtrosCoche");
+					while (true) {
+						System.out.println("En bucle invocarOtrosCoche");
 						jOtrosCoche.repaint();
-						try{
+						try {
 							Thread.sleep(20);
-						}catch(Exception e){
+						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
@@ -201,11 +255,12 @@ public class JCarreteraP2 extends JFrame{
 		t3.start();
 		invocarOtrosCoche();
 	}
+
 	public JCarreteraP2() {
-//		this.setSize(300, 400);
-		//setBounds(0, 0, 700, 900);
-		//invocarCoche();
-		setBounds(200,0, widthX, heighY);
+		// this.setSize(300, 400);
+		// setBounds(0, 0, 700, 900);
+		// invocarCoche();
+		setBounds(200, 0, widthX, heighY);
 		setVisible(true);
 		setResizable(false);
 		setTitle("Carretera");
@@ -219,96 +274,94 @@ public class JCarreteraP2 extends JFrame{
 		flowLayout.setAlignment(FlowLayout.LEADING);
 		flowLayout.setVgap(250);
 		flowLayout.setHgap(250);
-//		contentPane.addKeyListener(new KeyAdapter() {
-//			@Override
-//			public void keyPressed(KeyEvent k) {
-//				switch( k.getKeyChar() ){
-//					case 'w':
-//						if(co.getPosY()<heighY*0.07)
-//							co.setPosY(-hY*0.05);
-//						break;
-//					case 'e':
-//						break;
-//					case 'a':
-//						if(co.getPosX()> widthX*0.31) {
-//							if(co.getPosX()> widthX*0.45)
-//								co.setPosX(widthX*0.45);
-//							else
-//								co.setPosX(widthX*0.31);
-//						}
-//						break;
-//					case 's':
-//						if(co.getPosY()<heighY*0.8)
-//							co.setPosY(hY*0.05);
-//						break;
-//					case 'd':
-//						if(co.getPosX()<widthX*0.63){
-//							if(co.getPosX()<widthX*0.45)
-//								co.setPosX(widthX*0.45);
-//							else
-//								co.setPosX(widthX*0.63);
-//						}
-//						break;
-//					default:
-//						break;
-//				}
-//				switch( k.getKeyCode() ){
-//					case KeyEvent.VK_UP:
-//						if(co.getPosY()<heighY*0.07)
-//							co.setPosY(-hY*0.05);
-//						break;
-//					case KeyEvent.VK_LEFT:
-//						if(co.getPosX()> widthX*0.31) {
-//							if(co.getPosX()> widthX*0.45)
-//								co.setPosX(widthX*0.45);
-//							else
-//								co.setPosX(widthX*0.31);
-//						}
-//						break;
-//					case KeyEvent.VK_DOWN:
-//						if(co.getPosY()<heighY*0.8)
-//							co.setPosY(hY*0.05);
-//						break;
-//					case KeyEvent.VK_RIGHT:
-//						if(co.getPosX()<widthX*0.63){
-//							if(co.getPosX()<widthX*0.45)
-//								co.setPosX(widthX*0.45);
-//							else
-//								co.setPosX(widthX*0.63);
-//						}
-//						break;
-//					default:
-//						break;
-//				}
-//			}
-//		});
-		//contentPane2 = new JPanel();
-		//setContentPane(contentPane);
-		//contentPane2.setBounds(50, 50, 100, 200);
+		// contentPane.addKeyListener(new KeyAdapter() {
+		// @Override
+		// public void keyPressed(KeyEvent k) {
+		// switch( k.getKeyChar() ){
+		// case 'w':
+		// if(co.getPosY()<heighY*0.07)
+		// co.setPosY(-hY*0.05);
+		// break;
+		// case 'e':
+		// break;
+		// case 'a':
+		// if(co.getPosX()> widthX*0.31) {
+		// if(co.getPosX()> widthX*0.45)
+		// co.setPosX(widthX*0.45);
+		// else
+		// co.setPosX(widthX*0.31);
+		// }
+		// break;
+		// case 's':
+		// if(co.getPosY()<heighY*0.8)
+		// co.setPosY(hY*0.05);
+		// break;
+		// case 'd':
+		// if(co.getPosX()<widthX*0.63){
+		// if(co.getPosX()<widthX*0.45)
+		// co.setPosX(widthX*0.45);
+		// else
+		// co.setPosX(widthX*0.63);
+		// }
+		// break;
+		// default:
+		// break;
+		// }
+		// switch( k.getKeyCode() ){
+		// case KeyEvent.VK_UP:
+		// if(co.getPosY()<heighY*0.07)
+		// co.setPosY(-hY*0.05);
+		// break;
+		// case KeyEvent.VK_LEFT:
+		// if(co.getPosX()> widthX*0.31) {
+		// if(co.getPosX()> widthX*0.45)
+		// co.setPosX(widthX*0.45);
+		// else
+		// co.setPosX(widthX*0.31);
+		// }
+		// break;
+		// case KeyEvent.VK_DOWN:
+		// if(co.getPosY()<heighY*0.8)
+		// co.setPosY(hY*0.05);
+		// break;
+		// case KeyEvent.VK_RIGHT:
+		// if(co.getPosX()<widthX*0.63){
+		// if(co.getPosX()<widthX*0.45)
+		// co.setPosX(widthX*0.45);
+		// else
+		// co.setPosX(widthX*0.63);
+		// }
+		// break;
+		// default:
+		// break;
+		// }
+		// }
+		// });
+		// contentPane2 = new JPanel();
+		// setContentPane(contentPane);
+		// contentPane2.setBounds(50, 50, 100, 200);
 		contentPane.getContentPane().setLayout(null);
-		//contentPane.add(contentPane2);
-//		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-       
+		// contentPane.add(contentPane2);
+		// this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
 	}
-	private int y=-528;
-	
-	//TODO
-	//En un JFRame no se puede usar paintComponente
-	//EL JFrame tiene pait para dibujar los paneles
+
+	private int y = -528;
+
+	// TODO
+	// En un JFRame no se puede usar paintComponente
+	// EL JFrame tiene pait para dibujar los paneles
 	/*
-	@Override
-	public void paintComponent(Graphics g3){
-		Image img= ((ImageIcon)getIcon()).getImage(); //"img/Carretera-x-1-2.png"
-		Graphics2D g4 = (Graphics2D) g3;
-		g4.drawImage(img, 0, y, 512, 1056, null);
-		y = y+ 1;
-	}
-	*/
-	
-//	@Override
-//	public void paintComponent(Graphics g){
-//		Image img = ((ImageIcon)getIcon()).getImage();
-//		Graphics2D g2 = (Graphics2D) g;
-//		g2.drawImage(img, 0, 0, ANCHO_COCHE, ALTURA_COCHE, null);
-//	}
+	 * @Override public void paintComponent(Graphics g3){ Image img=
+	 * ((ImageIcon)getIcon()).getImage(); //"img/Carretera-x-1-2.png" Graphics2D
+	 * g4 = (Graphics2D) g3; g4.drawImage(img, 0, y, 512, 1056, null); y = y+ 1;
+	 * }
+	 */
+
+	// @Override
+	// public void paintComponent(Graphics g){
+	// Image img = ((ImageIcon)getIcon()).getImage();
+	// Graphics2D g2 = (Graphics2D) g;
+	// g2.drawImage(img, 0, 0, ANCHO_COCHE, ALTURA_COCHE, null);
+	// }
 }
