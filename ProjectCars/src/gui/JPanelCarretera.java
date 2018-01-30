@@ -30,17 +30,20 @@ public class JPanelCarretera extends JPanel{
 		}
 	}
 	
-	private int altura= 1056-512;
+	private int altura= 1056-520;
+	
+	public void bajarCarretera( int numPixels ) {
+		altura += numPixels;
+	}
 	public void paintComponent(Graphics grafico){
 		Dimension height = getSize();
 		try{
-			altura++;
 			ImageIcon Img = new ImageIcon(getClass().getResource("img/Carretera-x-1-2.png"));
 			grafico.drawImage(Img.getImage(), 0, altura, height.width, height.height, null);
 			if(altura>= 0)// && altura <= 600)
 				grafico.drawImage(Img.getImage(), 0, altura-1048, height.width, height.height, null);
 			if(altura > 512)
-				altura = 512-1056; //-544
+				altura = 500-1056; //-544
 		}catch(Exception e){
 			e.printStackTrace();
 		}
