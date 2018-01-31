@@ -89,9 +89,8 @@ public class JCarreteraP2 extends JFrame {
 								// }
 								if(c1.getX() > widthX*0.268)
 									mov[1] = true;
-								if(vel[0] > 0){
+								if(vel[0] > 0)
 									vel[0] = 0;
-								}
 								if(vel[0] > -3)
 									vel[0]--;
 								break;
@@ -102,9 +101,8 @@ public class JCarreteraP2 extends JFrame {
 								// co.setPosY(hY*0.05);
 								if(c1.getY() < heighY*0.9)
 									mov[2] = true;
-								if(vel[1] < 0){
+								if(vel[1] < 0)
 									vel[1] = 0;
-								}
 								if(vel[1] < 3)
 									vel[1]++;
 								break;
@@ -120,9 +118,8 @@ public class JCarreteraP2 extends JFrame {
 								// }
 								if(c1.getX() < widthX*0.629)
 									mov[3] = true;
-								if(vel[0] < 0){
+								if(vel[0] < 0)
 									vel[0] = 0;
-								}
 								if(vel[0] < 3)
 									vel[0]++;
 								break;
@@ -142,7 +139,13 @@ public class JCarreteraP2 extends JFrame {
 //								if (c1.getY() < heighY * 0.07)
 //									c1.setLocation(c1.getX(), c1.getY());
 								// co.setPosY(-hY*0.05);
-								mov[0] = true;
+								if(c1.getY() > heighY*0.05)
+									mov[0] = true;
+								if(vel[1] > 0){
+									vel[1] = 0;
+								}
+								if(vel[1] > -3)
+									vel[1]--;
 								break;
 							case KeyEvent.VK_LEFT:
 //								if (c1.getX() > widthX * 0.31)
@@ -153,14 +156,24 @@ public class JCarreteraP2 extends JFrame {
 								// else
 								// co.setPosX(widthX*0.31);
 								// }
-								mov[1] = true;
+								if(c1.getX() > widthX*0.268)
+									mov[1] = true;
+								if(vel[0] > 0)
+									vel[0] = 0;
+								if(vel[0] > -3)
+									vel[0]--;
 								break;
 							case KeyEvent.VK_DOWN:
 //								if (c1.getY() < heighY * 0.8)
 //									c1.setLocation(c1.getX(), c1.getY() + 1);
 								// if(co.getPosY()<heighY*0.8)
 								// co.setPosY(hY*0.05);
-								mov[2] = true;
+								if(c1.getY() < heighY*0.9)
+									mov[2] = true;
+								if(vel[1] < 0)
+									vel[1] = 0;
+								if(vel[1] < 3)
+									vel[1]++;
 								break;
 							case KeyEvent.VK_RIGHT:
 //								if (c1.getX() < widthX * 0.63)
@@ -171,7 +184,12 @@ public class JCarreteraP2 extends JFrame {
 								// else
 								// co.setPosX(widthX*0.63);
 								// }
-								mov[3] = true;
+								if(c1.getX() < widthX*0.629)
+									mov[3] = true;
+								if(vel[0] < 0)
+									vel[0] = 0;
+								if(vel[0] < 3)
+									vel[0]++;
 								break;
 							default:
 								break;
