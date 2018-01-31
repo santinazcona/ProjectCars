@@ -36,7 +36,12 @@ public class JCarreteraP2 extends JFrame {
 			false,  //s
 			false,  //d
 			false,  //e || "espacio" esta aun sin uso, pero para recordar hacer algo
-			false };//p para pausar
+			false   //p para pausar 
+	};
+	public static int[] vel = {
+			0, //Para x dom = [-3, 3]
+			0  //Para y dom = [-3, 3]
+	};
 
 	public static void invocar() {
 		Thread t = new Thread(new Runnable() {
@@ -65,6 +70,11 @@ public class JCarreteraP2 extends JFrame {
 								// if(co.getPosY()<heighY*0.07)
 								// co.setPosY(-hY*0.05);
 								mov[0] = true;
+								if(vel[1] > 0){
+									vel[1] = 0;
+								}
+								if(vel[1] > -3)
+									vel[1]--;
 								break;
 							case 'a':
 //								if (c1.getX() > widthX * 0.31)
@@ -77,6 +87,11 @@ public class JCarreteraP2 extends JFrame {
 								// co.setPosX(widthX*0.31);
 								// }
 								mov[1] = true;
+								if(vel[0] > 0){
+									vel[0] = 0;
+								}
+								if(vel[0] > -3)
+									vel[0]--;
 								break;
 							case 's':
 //								if (c1.getY() < heighY * 0.9)
@@ -84,6 +99,11 @@ public class JCarreteraP2 extends JFrame {
 								// if(co.getPosY()<heighY*0.8)
 								// co.setPosY(hY*0.05);
 								mov[2] = true;
+								if(vel[1] < 0){
+									vel[1] = 0;
+								}
+								if(vel[1] < 3)
+									vel[1]++;
 								break;
 							case 'd':
 //								if (c1.getX() < widthX * 0.63)
@@ -96,6 +116,11 @@ public class JCarreteraP2 extends JFrame {
 								// co.setPosX(widthX*0.63);
 								// }
 								mov[3] = true;
+								if(vel[0] < 0){
+									vel[0] = 0;
+								}
+								if(vel[0] < 3)
+									vel[0]++;
 								break;
 							case 'e':
 								mov[4] = true;
@@ -168,19 +193,19 @@ public class JCarreteraP2 extends JFrame {
 						jPC.repaint();
 						
 						if(mov[0]){	
-							c1.setLocation(c1.getX(), c1.getY()-1);
+							c1.setLocation(c1.getX(), c1.getY()+vel[1]);
 							mov[0] = false;
 						}
 						if(mov[1]){	
-							c1.setLocation(c1.getX()-1, c1.getY());
+							c1.setLocation(c1.getX()+vel[0], c1.getY());
 							mov[1] = false;
 						}
 						if(mov[2]){	
-							c1.setLocation(c1.getX(), c1.getY()+1);
+							c1.setLocation(c1.getX(), c1.getY()+vel[1]);
 							mov[2] = false;
 						}
 						if(mov[3]){	
-							c1.setLocation(c1.getX()+1, c1.getY());
+							c1.setLocation(c1.getX()+vel[0], c1.getY());
 							mov[3] = false;
 						}
 						if(mov[4]){	
