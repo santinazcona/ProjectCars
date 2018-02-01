@@ -57,17 +57,47 @@ public class JCarreteraP2 extends JFrame {
 					c1.setLocation((int) (widthX * 0.45), 400);
 					// invocarOtrosCoche(); //no dibuja, porque no se añaden al
 					// panel
+					
+					//Movimiento horizontal
 					jCarreteraP2.addKeyListener(new KeyAdapter() {
 						@Override
-						public void keyPressed(KeyEvent k) {
-							switch (k.getKeyChar()) {
-							case 'w':
-//								if (c1.getLocation().getY() < heighY * 0.07) {
-//									System.out.println(c1.getY());
-//									c1.setLocation(c1.getX(), c1.getY() + 1);
-//									System.out.println(c1.getY());
-//								}
-								// if(co.getPosY()<heighY*0.07)
+						public void keyPressed(KeyEvent j) {
+							switch(j.getKeyChar()){
+								case 'w':
+	//								if (c1.getLocation().getY() < heighY * 0.07) {
+	//									System.out.println(c1.getY());
+	//									c1.setLocation(c1.getX(), c1.getY() + 1);
+	//									System.out.println(c1.getY());
+	//								}
+									// if(co.getPosY()<heighY*0.07)
+									// co.setPosY(-hY*0.05);
+									if(c1.getY() > heighY*0.05)
+										mov[0] = true;
+									if(vel[1] > 0){
+										vel[1] = 0;
+									}
+									if(vel[1] > -3)
+										vel[1]--;
+									break;
+								case 's':
+	//								if (c1.getY() < heighY * 0.9)
+	//									c1.setLocation(c1.getX(), c1.getY() - 1);
+									// if(co.getPosY()<heighY*0.8)
+									// co.setPosY(hY*0.05);
+									if(c1.getY() < heighY*0.9)
+										mov[2] = true;
+									if(vel[1] < 0)
+										vel[1] = 0;
+									if(vel[1] < 3)
+										vel[1]++;
+									break;
+									default:
+										break;
+							}
+							switch(j.getKeyCode()){
+							case KeyEvent.VK_UP:
+//								if (c1.getY() < heighY * 0.07)
+//									c1.setLocation(c1.getX(), c1.getY());
 								// co.setPosY(-hY*0.05);
 								if(c1.getY() > heighY*0.05)
 									mov[0] = true;
@@ -77,6 +107,44 @@ public class JCarreteraP2 extends JFrame {
 								if(vel[1] > -3)
 									vel[1]--;
 								break;
+							case KeyEvent.VK_DOWN:
+//								if (c1.getY() < heighY * 0.8)
+//									c1.setLocation(c1.getX(), c1.getY() + 1);
+								// if(co.getPosY()<heighY*0.8)
+								// co.setPosY(hY*0.05);
+								if(c1.getY() < heighY*0.9)
+									mov[2] = true;
+								if(vel[1] < 0)
+									vel[1] = 0;
+								if(vel[1] < 3)
+									vel[1]++;
+								break;
+							default:
+								break;
+							}
+						}
+					});
+					//Movimiento lateral
+					jCarreteraP2.addKeyListener(new KeyAdapter() {
+						@Override
+						public void keyPressed(KeyEvent k) {
+							switch (k.getKeyChar()) {
+//							case 'w':
+////								if (c1.getLocation().getY() < heighY * 0.07) {
+////									System.out.println(c1.getY());
+////									c1.setLocation(c1.getX(), c1.getY() + 1);
+////									System.out.println(c1.getY());
+////								}
+//								// if(co.getPosY()<heighY*0.07)
+//								// co.setPosY(-hY*0.05);
+//								if(c1.getY() > heighY*0.05)
+//									mov[0] = true;
+//								if(vel[1] > 0){
+//									vel[1] = 0;
+//								}
+//								if(vel[1] > -3)
+//									vel[1]--;
+//								break;
 							case 'a':
 //								if (c1.getX() > widthX * 0.31)
 //									c1.setLocation(c1.getX() - 1, c1.getY());
@@ -94,18 +162,18 @@ public class JCarreteraP2 extends JFrame {
 								if(vel[0] > -3)
 									vel[0]--;
 								break;
-							case 's':
-//								if (c1.getY() < heighY * 0.9)
-//									c1.setLocation(c1.getX(), c1.getY() - 1);
-								// if(co.getPosY()<heighY*0.8)
-								// co.setPosY(hY*0.05);
-								if(c1.getY() < heighY*0.9)
-									mov[2] = true;
-								if(vel[1] < 0)
-									vel[1] = 0;
-								if(vel[1] < 3)
-									vel[1]++;
-								break;
+//							case 's':
+////								if (c1.getY() < heighY * 0.9)
+////									c1.setLocation(c1.getX(), c1.getY() - 1);
+//								// if(co.getPosY()<heighY*0.8)
+//								// co.setPosY(hY*0.05);
+//								if(c1.getY() < heighY*0.9)
+//									mov[2] = true;
+//								if(vel[1] < 0)
+//									vel[1] = 0;
+//								if(vel[1] < 3)
+//									vel[1]++;
+//								break;
 							case 'd':
 //								if (c1.getX() < widthX * 0.63)
 //									c1.setLocation(c1.getX() + 1, c1.getY());
@@ -123,30 +191,33 @@ public class JCarreteraP2 extends JFrame {
 								if(vel[0] < 3)
 									vel[0]++;
 								break;
-							case 'e':
-								mov[4] = true;
-								break;
-							case ' ':
-								mov[4] = true;
-								break;
-							case 'p':
-								mov[5] = true;
+//							case 'e':
+//								mov[4] = true;
+//								break;
+//							case ' ':
+//								mov[4] = true;
+//								break;
+//							case 'p':
+//								if(mov[5])
+//									mov[5] = false;
+//								else
+//									mov[5] = true;
 							default:
 								break;
 							}
 							switch (k.getKeyCode()) {
-							case KeyEvent.VK_UP:
-//								if (c1.getY() < heighY * 0.07)
-//									c1.setLocation(c1.getX(), c1.getY());
-								// co.setPosY(-hY*0.05);
-								if(c1.getY() > heighY*0.05)
-									mov[0] = true;
-								if(vel[1] > 0){
-									vel[1] = 0;
-								}
-								if(vel[1] > -3)
-									vel[1]--;
-								break;
+//							case KeyEvent.VK_UP:
+////								if (c1.getY() < heighY * 0.07)
+////									c1.setLocation(c1.getX(), c1.getY());
+//								// co.setPosY(-hY*0.05);
+//								if(c1.getY() > heighY*0.05)
+//									mov[0] = true;
+//								if(vel[1] > 0){
+//									vel[1] = 0;
+//								}
+//								if(vel[1] > -3)
+//									vel[1]--;
+//								break;
 							case KeyEvent.VK_LEFT:
 //								if (c1.getX() > widthX * 0.31)
 //									c1.setLocation(c1.getX() - 1, c1.getY());
@@ -163,18 +234,18 @@ public class JCarreteraP2 extends JFrame {
 								if(vel[0] > -3)
 									vel[0]--;
 								break;
-							case KeyEvent.VK_DOWN:
-//								if (c1.getY() < heighY * 0.8)
-//									c1.setLocation(c1.getX(), c1.getY() + 1);
-								// if(co.getPosY()<heighY*0.8)
-								// co.setPosY(hY*0.05);
-								if(c1.getY() < heighY*0.9)
-									mov[2] = true;
-								if(vel[1] < 0)
-									vel[1] = 0;
-								if(vel[1] < 3)
-									vel[1]++;
-								break;
+//							case KeyEvent.VK_DOWN:
+////								if (c1.getY() < heighY * 0.8)
+////									c1.setLocation(c1.getX(), c1.getY() + 1);
+//								// if(co.getPosY()<heighY*0.8)
+//								// co.setPosY(hY*0.05);
+//								if(c1.getY() < heighY*0.9)
+//									mov[2] = true;
+//								if(vel[1] < 0)
+//									vel[1] = 0;
+//								if(vel[1] < 3)
+//									vel[1]++;
+//								break;
 							case KeyEvent.VK_RIGHT:
 //								if (c1.getX() < widthX * 0.63)
 //									c1.setLocation(c1.getX(), c1.getY());
@@ -194,7 +265,27 @@ public class JCarreteraP2 extends JFrame {
 							default:
 								break;
 							}
-							jPC.repaint();
+//							jPC.repaint();
+						}
+					});
+					jCarreteraP2.addKeyListener(new KeyAdapter() {
+						@Override
+						public void keyPressed(KeyEvent p) {
+							switch (p.getKeyChar()) {
+							case 'e':
+								mov[4] = true;
+								break;
+							case ' ':
+								mov[4] = true;
+								break;
+							case 'p':
+								if(mov[5])
+									mov[5] = false;
+								else
+									mov[5] = true;
+							default:
+								break;
+							}
 						}
 					});
 
@@ -213,31 +304,43 @@ public class JCarreteraP2 extends JFrame {
 						
 						jPC.bajarCarretera(1);
 						jPC.repaint();
-						
-						if(mov[0]){	
-							c1.setLocation(c1.getX(), c1.getY()+vel[1]);
-							mov[0] = false;
-						}
-						if(mov[1]){	
-							c1.setLocation(c1.getX()+vel[0], c1.getY());
-							mov[1] = false;
-						}
-						if(mov[2]){	
-							c1.setLocation(c1.getX(), c1.getY()+vel[1]);
-							mov[2] = false;
-							System.out.println(c1.getX());
-						}
-						if(mov[3]){	
-							c1.setLocation(c1.getX()+vel[0], c1.getY());
-							mov[3] = false;
+						if((mov[0] || mov[2]) || (mov[1] || mov[3])){
+							if((mov[0] || mov[2]) && (mov[1] || mov[3])){
+								c1.setLocation(c1.getX()+vel[0], c1.getY()+vel[1]);
+								mov[0] = false; mov[1] = false; mov[2] = false; mov[3] = false;
+							}
+							else{
+								if(mov[0] || mov[2]){	
+									c1.setLocation(c1.getX(), c1.getY()+vel[1]);
+									mov[0] = false; mov[2] = false;
+								}
+								if(mov[1] || mov[3]){	
+									c1.setLocation(c1.getX()+vel[0], c1.getY());
+									mov[1] = false; mov[3] = false;
+								}
+//								if(mov[2]){	
+//									c1.setLocation(c1.getX(), c1.getY()+vel[1]);
+//									mov[2] = false;
+//									System.out.println(c1.getX());
+//								}
+//								if(mov[3]){	
+//									c1.setLocation(c1.getX()+vel[0], c1.getY());
+//									mov[3] = false;
+//								}
+							}
 						}
 						if(mov[4]){	
 							//Aun hay que hacer el metodo para que las habilidades
 							mov[4] = false;
 						}
-						if(mov[5]){
+						while(mov[5]){
 							//crear una nueva ventana desde aqui, con lo que el hilo que ejecuta el juego se parará
-							mov[5] = false;
+							//Que muestre algo para visualizar la pausa
+							try {
+								Thread.sleep(20);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 						}
 //						mov[1] = false;
 //						mov[2] = false;
