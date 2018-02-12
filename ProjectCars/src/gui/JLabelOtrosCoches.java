@@ -14,7 +14,19 @@ public class JLabelOtrosCoches extends JLabel{
 	
 	public JLabelOtrosCoches(){
 		try{
-			setIcon(new ImageIcon(getClass().getResource("img/coche2.png")));
+			switch((int) (Math.random()*4)){
+			case 0:
+				setIcon(new ImageIcon(getClass().getResource("img/coche2.png")));
+				break;
+			case 1:
+				setIcon(new ImageIcon(getClass().getResource("img/coche3.png")));
+				break;
+			case 2:
+				setIcon(new ImageIcon(getClass().getResource("img/coche4.png")));
+				break;
+				default:
+					break;
+			}
 		}catch (Exception e){
 			System.err.println("La imagen del coche no se ha podido encontrar");
 			e.printStackTrace();
@@ -29,5 +41,4 @@ public class JLabelOtrosCoches extends JLabel{
 		g2.rotate(Math.PI/2);
 		g2.drawImage(img, 0, 0, ANCHO_COCHE, ALTURA_COCHE, null);
 	}
-	
 }

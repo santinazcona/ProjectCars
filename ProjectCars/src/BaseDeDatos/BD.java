@@ -16,8 +16,16 @@ public class BD {
 	
 	
 		public void conectar(){
+			Connection connection = null;
 			try{
 				conexion = DriverManager.getConnection("jdbc:sqlite:ProjectCars.db");
+				try{
+					Statement statement = connection.createStatement();
+					statement.setQueryTimeout(30);
+					statement.executeUpdate("Create table Score (String nombre, int tiempo)"); //tiempo en segundos
+				}catch (SQLException e1){
+					throw new RuntimeException("La tabla ya esta creada");
+				}
 		    } catch (SQLException E) {
 		        E.printStackTrace();
 		    	throw new RuntimeException("No se ha podido realizar la conexion");
@@ -46,7 +54,24 @@ public class BD {
 				E.printStackTrace();
 			}
 		}
-		public static boolean compruebaNick(String nick){
+		
+		public void insertarScore(String nick, int tiempo){
+			String bd = "INSERT INTO Score(nick, tiempo) VALUES ('"+nick+"','"+tiempo+"')";
+			try{
+				stmt.execute(bd);
+			}catch(SQLException iC){
+				iC.printStackTrace();
+			}
+		}
+		
+		public void obtenerMaxScore(){
+			String s = "SELECT * FROM Score ORDER BY tiempo";
+		}
+		
+		
+		
+		
+		/*public static boolean compruebaNick(String nick){
 			boolean comprobado = false;
 			String s = "SELECT * FROM Usuario WHERE Nick='"+nick+"'";
 			ResultSet resultado;
@@ -85,6 +110,7 @@ public class BD {
 			
 			return u;
 		}
+		
 		public void guardarCoches(ArrayList<Coche> coche){
 			for(Coche c: coche){
 				String s = "insert into coche values("+c.getPosX()+","+c.getPosY()+",'"+c.getName()+"',"+")";
@@ -95,6 +121,6 @@ public class BD {
 				}
 			}
 			
-		}
+		}*/
 }
 		
