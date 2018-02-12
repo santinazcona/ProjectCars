@@ -20,6 +20,11 @@ public class JScore extends JFrame{
 		getContentPane().add(table, BorderLayout.CENTER);
 		mDatos = new DefaultTableModel() { 
 			{setColumnIdentifiers( new Object[] { "Nick", "Tiempo" } ); }
+			@Override
+			public void setValueAt(Object aValue, int row, int column) {
+				super.setValueAt(aValue, row, column);
+				
+			}
 		};
 	}
 }

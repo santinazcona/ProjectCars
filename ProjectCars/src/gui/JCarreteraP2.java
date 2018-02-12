@@ -26,6 +26,8 @@ import java.awt.event.MouseEvent;
 
 public class JCarreteraP2 extends JFrame {
 
+	
+	static JLabelCoche c1;
 	private JFrame contentPane;
 	private JPanel contentP;
 	private JPanel contentP2;
@@ -66,7 +68,7 @@ public class JCarreteraP2 extends JFrame {
 					time_start = System.currentTimeMillis();
 					JCarreteraP2 jCarreteraP2 = new JCarreteraP2();
 					JPanelCarretera jPC = new JPanelCarretera();
-					JLabelCoche c1 = new JLabelCoche();
+					c1 = new JLabelCoche();
 					JLabelOtrosCoches c2 = new JLabelOtrosCoches();
 					JLabel jbost = new JLabel();
 					JTextField bost = new JTextField("");
@@ -208,6 +210,7 @@ public class JCarreteraP2 extends JFrame {
 							pausa.remove(sal);
 							c1.setOpaque(true);
 							time_start = System.currentTimeMillis();
+							jCarreteraP2.requestFocus();
 						}
 						try {
 							Thread.sleep(20);

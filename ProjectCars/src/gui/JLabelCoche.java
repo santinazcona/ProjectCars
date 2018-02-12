@@ -28,4 +28,13 @@ public class JLabelCoche extends JLabel{
 		Graphics2D g2 = (Graphics2D) g;
 		g2.drawImage(img, 0, 0, ANCHO_COCHE, ALTURA_COCHE, null);
 	}
+
+	public static int getAlturaCoche() {
+		return ALTURA_COCHE;
+	}
+
+	public static int getAnchoCoche() {
+		return ANCHO_COCHE;
+	}
+	
 }
